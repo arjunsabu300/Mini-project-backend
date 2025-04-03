@@ -1,41 +1,42 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import connectDB from "./Backend/database.js";
-import loginauthRoutes from "./Backend/loginauth.js";
-import registerRoutes from "./Backend/register.js";
-import RoomRoutes from "./Backend/Room.js";
-import StockdetailsRoutes from "./Backend/Stockdetails.js";
-import StockstatusupdateRoutes from "./Backend/stockstatusupdate.js";
-import addstocksicRoutes from "./Backend/addstocksic.js";
-import RegistercomplaintRoutes from "./Backend/Registercomplaint.js";
-import maintenanceRoutes from "./Backend/maintenance.js";
-import ClearancestockRoutes from "./Backend/Clearancestock.js";
-import AssignfacultyprincipalRoutes from "./Backend/Assignfacultyprincipal.js";
-import notificationRoutes from "./Backend/notification.js";
-import notificationcontrollerRoutes from "./Backend/notificationcontrollerarjun.js";
-import AddaccountbynotiRoutes from "./Backend/Addaccountbynoti.js";
-import profilebackRoutes from "./Backend/profileback.js";
-import VerificationRoutes from "./Backend/Verification.js";
-import reportfetchRoutes from "./Backend/reportfetch.js";
-import requeststockdetailsRoutes from "./Backend/requeststockdetails.js";
-import AssignedfacultyfetchRoutes from "./Backend/Assignedfacultyfetch.js";
-import mainRoutes from "./Backend/mainstockdetails.js";
-import forwardStockRoutes from "./Backend/forwardtsk.js";
-import forwardactionRoutes from "./Backend/forwardaction.js";
-import forwardhodRoutes from "./Backend/forwardstockhod.js";
-import SicStockAcceptNotfSenderRoutes from "./Backend/SicStockAcceptNotfSender.js";
-import hodforwardactionRoutes from "./Backend/hodforwardaction.js";
-import markreadRoutes from "./Backend/markread.js"
-import sicrejecterRoutes from "./Backend/sicrejecter.js";
-import roomRoutes from "./Backend/roomRoutes.js"
-import deleteaccRoutes from "./Backend/deleteacc.js";
-import warrantyroutes from "./Backend/stockwarranty.js";
-import stockhandover from "./Backend/stockhandover.js";
-import handoveraction from "./Backend/handoveraction.js";
-import transfer from "./Backend/stocktranfer.js";
-import transferactionroute from "./Backend/transferaction.js";
-import transferlog from "./Backend/transferlog.js";
+import connectDB from "./src/Backend/database.js";
+import loginauthRoutes from "./src/Backend/loginauth.js";
+import registerRoutes from "./src/Backend/register.js";
+import RoomRoutes from "./src/Backend/Room.js";
+import StockdetailsRoutes from "./src/Backend/Stockdetails.js";
+import StockstatusupdateRoutes from "./src/Backend/stockstatusupdate.js";
+import addstocksicRoutes from "./src/Backend/addstocksic.js";
+import RegistercomplaintRoutes from "./src/Backend/Registercomplaint.js";
+import maintenanceRoutes from "./src/Backend/maintenance.js";
+import ClearancestockRoutes from "./src/Backend/Clearancestock.js";
+import AssignfacultyprincipalRoutes from "./src/Backend/Assignfacultyprincipal.js";
+import notificationRoutes from "./src/Backend/notification.js";
+import notificationcontrollerRoutes from "./src/Backend/notificationcontrollerarjun.js";
+import AddaccountbynotiRoutes from "./src/Backend/Addaccountbynoti.js";
+import profilebackRoutes from "./src/Backend/profileback.js";
+import VerificationRoutes from "./src/Backend/Verification.js";
+import reportfetchRoutes from "./src/Backend/reportfetch.js";
+import requeststockdetailsRoutes from "./src/Backend/requeststockdetails.js";
+import AssignedfacultyfetchRoutes from "./src/Backend/Assignedfacultyfetch.js";
+import mainRoutes from "./src/Backend/mainstockdetails.js";
+import forwardStockRoutes from "./src/Backend/forwardtsk.js";
+import forwardactionRoutes from "./src/Backend/forwardaction.js";
+import forwardhodRoutes from "./src/Backend/forwardstockhod.js";
+import SicStockAcceptNotfSenderRoutes from "./src/Backend/SicStockAcceptNotfSender.js";
+import hodforwardactionRoutes from "./src/Backend/hodforwardaction.js";
+import markreadRoutes from "./src/Backend/markread.js"
+import sicrejecterRoutes from "./src/Backend/sicrejecter.js";
+import roomRoutes from "./src/Backend/roomRoutes.js"
+import deleteaccRoutes from "./src/Backend/deleteacc.js";
+import warrantyroutes from "./src/Backend/stockwarranty.js";
+import stockhandover from "./src/Backend/stockhandover.js";
+import handoveraction from "./src/Backend/handoveraction.js";
+import transfer from "./src/Backend/stocktranfer.js";
+import transferactionroute from "./src/Backend/transferaction.js";
+import transferlog from "./src/Backend/transferlog.js";
+import approveRoutes from "./src/Backend/approvereport.js"
 dotenv.config();
 const app = express();
 
@@ -81,6 +82,7 @@ app.use(handoveraction);
 app.use("/api/ststock", transfer);
 app.use(transferactionroute);
 app.use("/api", transferlog);
+app.use("/api",approveRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
