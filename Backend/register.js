@@ -112,7 +112,7 @@ router.post("/", async (req, res) => {
       await transporter.sendMail(mailOptions);
     }
     if (role.toLowerCase() === "furniture-verifier") {
-      const formattedDate = lastdate ? new Date(lastdate).toLocaleDateString() : "N/A";
+      const formattedDate = lastdate ? new Date(lastdate).toLocaleDateString("en-GB") : "N/A";
 
       const mailOptions = {
         from: process.env.EMAIL_USER,

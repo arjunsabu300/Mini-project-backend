@@ -43,7 +43,7 @@ router.post("/reportviews", async (req, res) => {
       console.log(verify_date);
       // ✅ Fetch all items verified by this email
       const items = await Verificationmodel.find({ verifier_email:verifier_email,date_of_verify:verify_date });
-      console.log("items" ,items);
+      // console.log("items" ,items);
   
       if (!items.length) {
         return res.status(404).json({ error: "No items found for this verifier" });
@@ -71,7 +71,7 @@ router.post("/reportviews", async (req, res) => {
 
       const itemDetails = Array.from(uniqueItems.values());
 
-      console.log(itemDetails);
+      // console.log(itemDetails);
   
       // ✅ Send the response in table format
       res.json({

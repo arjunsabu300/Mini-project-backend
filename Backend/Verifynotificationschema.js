@@ -9,7 +9,8 @@ const verifyNotificationSchema = new mongoose.Schema({
     premise: { type: String, required: true },
     verify_date: { type: Date},
     status: { type: String, default: 'unread' },
-    date: { type: Date, default: Date.now }
+    date: { type: Date, default: Date.now },
+    approval: {type:String, default: 'Pending'}
 });
 
 const VerifyNotification = mongoose.models.VerifyNotification || mongoose.model('VerifyNotification', verifyNotificationSchema, 'notifications');

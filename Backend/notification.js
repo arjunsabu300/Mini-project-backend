@@ -41,7 +41,10 @@ router.get("/api/notifications", async (req, res) => {
                     break;
                 case "stocktransfer":
                     message="New stock transfer request";
-                    break;         
+                    break;
+                case "reportapprove":
+                    message="New message from Principal";
+                    break;                
                 default:
                     message = "New notification received";
                     break;

@@ -10,7 +10,7 @@ import AssignfacultyNotification from "./Assignfacultyschema.js";
 import VerifyNotification from "./Verifynotificationschema.js";
 import HandoverStockNotification from "./handoverstocknotification.js";
 import StockTransferNotification from "./transferstocknotificatiion.js";
-
+import ReportApprove from "./reportApproveSchema.js";
 
 const router = express.Router();
 
@@ -58,6 +58,8 @@ router.get("/api/fetch-notifications", async (req, res) => {
         const stockHandoverNotifications = await HandoverStockNotification.find({ receiver, status: "unread",type: "stockhandover" });
  
         const stockTransferNotifications = await StockTransferNotification.find({ receiver, status: "unread",type: "stocktransfer" });
+
+        const reportapprove = await ReportApprove.find({ receiver, status: "unread",type: "reportapprove" });
 
         // 🔄 Process TskForwardNotifications
         const detailedTskNotifications = await Promise.all(
@@ -220,6 +222,14 @@ router.get("/api/fetch-notifications", async (req, res) => {
             createdAt: stockNotif.date,
         }));
 
+        const deatiledReportApprove = reportapprove.map((approveNotif) => ({
+            _id: approveNotif._id,
+            type: approveNotif.type,
+            sender: approveNotif.sender,  
+            status: approveNotif.status,
+            createdAt: approveNotif.date,
+        }));
+
         // ✅ Merge all notifications
         const allNotifications = [
             ...detailedTskNotifications,
@@ -232,6 +242,7 @@ router.get("/api/fetch-notifications", async (req, res) => {
             ...verifyNotifications,
             ...stockHandover,
             ...stockNotifications,
+            ...deatiledReportApprove,
         ];
 
         // ✅ Send processed notifications to frontend
